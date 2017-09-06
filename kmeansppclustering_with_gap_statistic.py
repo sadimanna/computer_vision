@@ -1,3 +1,4 @@
+#K-Means++ Clustering with Gap Statistic to determine the optimal number of clusters
 import sys
 import numpy as np
 import scipy.io as sio
