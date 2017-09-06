@@ -5,7 +5,7 @@ Store the images in a folder.
 
 Open visual_words.m
 
-Provide the folder name in place of "folder_name".
+Provide the folder path name in place of "imagepath".
 
 And change the paths of the source and destination paths accordingly.
 
