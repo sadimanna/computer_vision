@@ -16,7 +16,8 @@ def gap_statistic(data):
 	sizedata = [len(data),len(data[0])]
 	SD = []
 	gap = []
-	for knum in xrange(10,22):
+	for knum in xrange(1,20):
+		#I assumed that the number of clusters in my data won't be more than 20, this can be changed accordingly
 		print knum
 		#Clustering original Data
 		kmeanspp = KMeans(n_clusters=knum,init = 'k-means++',max_iter = 100,n_jobs = 1)
@@ -43,17 +44,20 @@ def gap_statistic(data):
 		if diff>0:
 			opt_k = i+10
 			break
-	if opt_k < 22:
-		print opt_k
+	if opt_k < 20:
+		#print opt_k
 		return opt_k
 	else:
-		return 22
+		return 20
+		#Returning 20 if opt_k is more than 20 in my case, as I wanted not to search more than 20.
+		# Not required if range is larger.
 
 
 ntrials = 50
 for ntrial in xrange(ntrials):
 	print 'ntrial: ',ntrial
 	optimal_ks.append(gap_statistic(data))
+#For plotting the gap statistic measure
 #plt.plot(np.linspace(10,19,10,True),gap)
 #plt.show()
 unique_opt_k = list(set(optimal_ks))
@@ -71,9 +75,7 @@ for u_o_k in unique_opt_k:
 		second_opt_k = u_o_k
 print opt_k
 print k_count
-##14, 0
 #Clusterin with optimal number of k
-#opt_k =14
 kmeanspp = KMeans(n_clusters = opt_k,init='k-means++',max_iter=100,n_jobs=1)
 kmeanspp.fit(data)
 centers = kmeanspp.cluster_centers_
