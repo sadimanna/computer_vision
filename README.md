@@ -1,9 +1,9 @@
 # computervision
 Implementation of various algorithms of Interest Point Detectors in Octave/Matlab(with a few changes)
 
-visual_words -> harris_affine.
-
 Store the images in a folder.
+
+Open visual_words.m
 
 Provide the folder name in place of "folder_name".
 
