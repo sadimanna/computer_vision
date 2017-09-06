@@ -1,10 +1,10 @@
 %%Feature extraction using BoW
 pkg load image
-imagepath = "/home/siladittya/octave/ISI/TUGraz_bike/";
+imagepath = "/home/username/octave/image_folder_name/";
 file = dir([imagepath,'*.png']);
 nframes = length(file);
 bow = [];
-for i=1:100
+for i=1:nframes
   img = imread(strcat([imagepath,file(i).name]));
   [h,w,numColor] = size(img);
   if numColor>1
@@ -23,9 +23,9 @@ for i=1:100
     endif
   endfor
   save -4 bowdata.mat bow
-  system('python /home/siladittya/octave/ISI/kmeansppclustering.py /home/siladittya/octave/ISI/bowdata.m')
+  system('python /home/username/octave/kmeansppclustering.py /home/username/octave/bowdata.mat')
   %%Prepared Dataset
-  visual_words = load('/home/siladittya/octave/ISI/classified_data.mat','-4')
+  visual_words = load('/home/username/octave/classified_data.mat','-4')
   
 endfor
 
