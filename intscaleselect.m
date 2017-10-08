@@ -12,7 +12,7 @@ function scale = intscaleselect(W)
     logvalvec = [logvalvec,logval];
   endfor
   for n=2:9
-    if logvalvec(n)==max(logvalvec) && logvalvec(n)!=0
+    if logvalvec(n)==max(logvalvec) && logvalvec(n)~=0
       scale = ki^(n-1);
     endif
   endfor
