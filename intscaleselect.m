@@ -4,7 +4,7 @@ function scale = intscaleselect(W)
   Wlog = [];
   for k=1:10
     sigma = ki^(k-1);
-    Wlog(:,:,k) = uint8(abs(conv2(conv2(W,fspecial('gaussian',[3 3],sigma),'same'),fspecial('log',[3 3],sigma),'same')));
+    Wlog(:,:,k) = double(abs(conv2(conv2(W,fspecial('gaussian',[3 3],sigma),'same'),fspecial('log',[3 3],sigma),'same')));
   endfor
   logvalvec = [];
   for k=1:10
