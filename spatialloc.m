@@ -1,13 +1,19 @@
-function xwk = spatialloc(xw,sigmaI,sigmaD,W0)
+function xwk = spatialloc(xwkm1,sigmaI,sigmaD,W)
   %disp('spatialloc')
-  xw = xw;
   si = sigmaI;
   sd = sigmaD;
-  W = W0;
   R = harrismeasure_spatloc(W,si,sd);
   R = R(2:4,2:4);
-  maxR = max(R);
-  maxRx = ceil(maxR/3)-2;
-  maxRy = mod(maxR,3)-2;
-  xwk = [maxRx+xw(1);maxRy+xw(2)];
-endfunction
+  maxR = max(max(R));
+  if nnz(R==maxR) > 1
+      xwk = xwkm1;
+  else
+    maxRind = find(R==maxR);
+    maxRcol = ceil(maxRind/3)-2;
+    maxRrow = mod(maxRind,3)-2;
+    if maxRrow==-2
+        maxRrow=1;
+    end
+    xwk = [maxRrow+xwkm1(1),maxRcol+xwkm1(2)];
+  end
+end
