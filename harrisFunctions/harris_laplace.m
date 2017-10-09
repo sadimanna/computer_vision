@@ -1,4 +1,4 @@
-function scaleinvpts = harris_laplace(img,nframe=1)
+function scaleinvpts = harris_laplace(img)
   %%evaluating each frame
   sign = 1.0;
   ki=1.2;
