@@ -44,27 +44,27 @@ function scaleinvpts = harris_laplace(img,nframe=1)
         C2 = Corners(h-i-2:h-i,w-j-2:w-j);
         C3 = Corners(h-i-2:h-i,j:j+2);
         C4 = Corners(i:i+2,w-j-2:w-j);
-        if C1(2,2)==max(max(C1)) && C1(2,2)!=0 && nnz(C1=C1(2,2))==1
+        if C1(2,2)==max(max(C1)) && C1(2,2)~=0 && nnz(C1=C1(2,2))==1
           row = [row,i+1];
           col = [col,j+1];
-        endif
-        if C2(2,2)==max(max(C2)) && C2(2,2)!=0 && nnz(C2=C2(2,2))==1
+        end
+        if C2(2,2)==max(max(C2)) && C2(2,2)~=0 && nnz(C2=C2(2,2))==1
           row = [row,h-i-1];
           col = [col,w-j-1];
-        endif
-        if C3(2,2)==max(max(C3)) && C3(2,2)!=0 && nnz(C3=C3(2,2))==1
+        end
+        if C3(2,2)==max(max(C3)) && C3(2,2)~=0 && nnz(C3=C3(2,2))==1
           row = [row,h-i-1];
           col = [col,j+1];
-        endif
-        if C4(2,2)==max(max(C4)) && C4(2,2)!=0 && nnz(C4=C4(2,2))==1
+        end
+        if C4(2,2)==max(max(C4)) && C4(2,2)~=0 && nnz(C4=C4(2,2))==1
           row = [row,i+1];
           col = [col,w-j-1];
-        endif
+        end
         j=j+1;
-      endwhile
+      end
       i=i+1;
-    endwhile
-  endfor
+    end
+  end
 
   %%Laplace Of Gaussian
 
@@ -74,7 +74,7 @@ function scaleinvpts = harris_laplace(img,nframe=1)
   for k=1:10
     sigma = ki^(k-1);
     imglog(:,:,k) = uint8(abs(conv2(conv2(img,fspecial('gaussian',[3 3],sigma),'same'),fspecial('log',[3 3],sigma),'same')));
-  endfor
+  end
   for i=1:lenrc
     r = row(i);
     c = col(i);
@@ -82,21 +82,21 @@ function scaleinvpts = harris_laplace(img,nframe=1)
     for n=1:10
       logval = imglog(r,c,n);
       logvalvec = [logvalvec,logval];
-    endfor
+    end
     lensipb = length(scaleinvpts);
     for n=2:9
       log3val = logvalvec(n-1:n+1);
-      if log3val(2)==max(log3val) && log3val(2)!=0
+      if log3val(2)==max(log3val) && log3val(2)~=0
         scaleinvpts = [scaleinvpts; r,c,ki^(n-1)];
-      endif
-    endfor
+      end
+    end
     if lensipb == length(scaleinvpts)
       scaleinvpts = [scaleinvpts; r,c,1];
-    endif
-  endfor
+    end
+  end
   %figure(nframe)
   %imshow(img)
   %hold on
   %plot(scaleinvpts(:,2),scaleinvpts(:,1),'gs')
   %save -6 scaleinvpts.mat scaleinvpts
-endfunction
+end
