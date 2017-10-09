@@ -1,6 +1,6 @@
 %%Feature extraction using BoW
-pkg load image
-imagepath = "/home/username/octave/image_folder_name/";
+%pkg load image
+imagepath = '/home/username/octave/image_folder_name/';
 file = dir([imagepath,'*.png']);
 nframes = length(file);
 bow = [];
