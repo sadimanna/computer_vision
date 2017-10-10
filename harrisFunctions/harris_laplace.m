@@ -1,3 +1,6 @@
+%% May give error or no results.
+%% Try harrisLaplace.m instead if this doesn't work 
+
 function scaleinvpts = harris_laplace(img)
   %%evaluating each frame
   sign = 1.0;
