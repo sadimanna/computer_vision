@@ -6,7 +6,7 @@ function affineinvpts = harrisaffine(img,scaleinvpts)
   epsilon_c = 1;
   for i=1:lenrc
     loop = 0;
-    disp(i)
+    %disp(i)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Step 1
     %% Initializing interest points
@@ -105,14 +105,4 @@ function affineinvpts = harrisaffine(img,scaleinvpts)
       end
     end
   end
-  
-  %%Discarding negative points
-%   affine1 = affineinvpts(:,1)>0;
-%   affine2 = affineinvpts(:,2)>0;
-%   affine3 = affine1&affine2;
-%   affinefc = affineinvpts(:,1);
-%   affinefc = affinefc(affine3);
-%   affinesc = affineinvpts(:,2);
-%   affinesc = affinesc(affine3);
-%   affineinvpts = [affinefc,affinesc];
 end
