@@ -1,7 +1,7 @@
-function imgwyy = calcimgyy(W0,sigmaI,sigmaD)
-  Lwy = [-1,0,1]'*fspecial('gaussian',[1 3],sigmaD);
-  gw = fspecial('gaussian',[3 3],sigmaI);
-  imgwy = conv2(W0,Lwy,'same');
+function imgwyy = calcimgyy(W,sigmaI,sigmaD)
+  [~,Lwy] = gradient(fspecial('gaussian',5,sigmaD));
+  gw = fspecial('gaussian',5,sigmaI);
+  imgwy = conv2(W,Lwy,'same');
   imgwyy = imgwy.^2;
   imgwyy = conv2(imgwyy,gw,'same');
-endfunction
+end

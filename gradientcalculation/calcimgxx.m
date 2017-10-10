@@ -1,11 +1,10 @@
-function imgwxx = calcimgxx(W0,sigmaI,sigmaD)
+function imgwxx = calcimgxx(W,sigmaI,sigmaD)
   %disp('calcimgxx')
   si = sigmaI;
   sd = sigmaD;
-  W = W0;
-  Lwx = fspecial('gaussian',[3 1],sd)*[-1,0,1];
-  gw = fspecial('gaussian',[3 3],si);
+  Lwx = gradient(fspecial('gaussian',5,sd));
+  gw = fspecial('gaussian',5,si);
   imgwx = conv2(W,Lwx,'same');
   imgwx_x = imgwx.^2;
   imgwxx = conv2(imgwx_x,gw,'same');
-endfunction
+end
