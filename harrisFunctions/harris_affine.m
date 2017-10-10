@@ -1,5 +1,5 @@
 function affineinvpts = harris_affine(img,scaleinvpts)
-  scaleinvpts = harrisLaplace(img);
+  %scaleinvpts = harrisLaplace(img);
   [h,w]=size(img);
   lenrc = length(scaleinvpts);
   affineinvpts = [];
