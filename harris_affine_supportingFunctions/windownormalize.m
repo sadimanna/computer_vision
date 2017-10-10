@@ -3,4 +3,4 @@ function window = windownormalize(window)
   minval = min(min(window));
   rangeval = maxval-minval;
   window = ((window-minval)*255)/rangeval;
-endfunction
+end
