@@ -5,7 +5,7 @@ function scaleinvpts = harris_laplace(img)
   %%evaluating each frame
   sign = 1.0;
   ki=1.2;
-  s=0.6;
+  s=0.7;
   sigi = 1.0;
   sigd = s*sigi;
   %img = imread(imagepath);
