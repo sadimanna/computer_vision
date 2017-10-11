@@ -1,4 +1,4 @@
-function scaleinvpts = harrisLaplace(img)
+function scaleinvpts = harrisLaplaceNew(img)
     sig0 = 1.5;
     scaleFactor = 1.2;
     s = 0.7;
